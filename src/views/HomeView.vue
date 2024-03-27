@@ -1,11 +1,11 @@
 <script setup>
-	
+	import LogoAA from '@/components/LogoAA.vue'
 </script>
 
 <template>
 
 <h1 class="text-xl">
-  HELLO
+  <LogoAA />
  </h1>
 
 </template>
