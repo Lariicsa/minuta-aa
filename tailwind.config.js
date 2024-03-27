@@ -11,13 +11,13 @@ module.exports = {
 			
 		},
 		colors: {
-      black: "#010101",
-			blue: "#5075F7",
+      black: "#0E0E0F",
+			blue: "#2E3192",
 			white: "#FFFFFF",
 		},
 	},
 	fontfamily: {
-		body: ["Mouse Memoirs, chivo"],
+		body: ["Montserrat"],
 	},
 
 	// ...
