@@ -7,10 +7,10 @@
 	const dateYear = ref(null);
 </script>
 <template>
-	<div class="flex flex-col sm:flex-row w-full items-center">
-		<p class="flex w-auto text-[16px] sm:text-[20px]">Ciudad Nezahualcóyotl</p>
+	<div class="flex w-full items-baseline">
+		<p class="flex w-[178px] text-[16px] sm:text-[20px] font-normal">Ciudad Nezahualcóyotl</p>
 		<div
-			class="flex w-full h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
+			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
 			<div class="flex w-auto items-end justify-start">
 				<label>a</label>
 				<input v-model="dateDay" type="number" class="w-[54px]" />
