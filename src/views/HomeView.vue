@@ -1,13 +1,15 @@
+<!-- @format -->
+
 <script setup>
-	import LogoAA from '@/components/LogoAA.vue'
+	import LogoAA from "@/components/LogoAA.vue";
+	import FormAA from "@/components/FormAA.vue";
 </script>
 
 <template>
-
-<h1 class="text-xl">
-  <LogoAA />
- </h1>
-
+	<h1 class="text-xl">
+		<LogoAA />
+		<FormAA />
+	</h1>
 </template>
 
 <style>
