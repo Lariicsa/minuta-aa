@@ -7,10 +7,10 @@
 	const dateYear = ref(null);
 </script>
 <template>
-	<div class="flex flex-col sm:flex-row w-full items-center">
-		<p class="flex w-auto text-[16px] sm:text-[20px]">Ciudad Nezahualcóyotl</p>
+	<div class="flex w-full items-baseline flex-wrap">
+		<p class="flex w-[178px] text-[16px] sm:text-[20px] font-normal my-[8px]">Ciudad Nezahualcóyotl</p>
 		<div
-			class="flex w-full h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
+			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
 			<div class="flex w-auto items-end justify-start">
 				<label>a</label>
 				<input v-model="dateDay" type="number" class="w-[54px]" />
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col w-full items-start">
+	<div class="flex flex-col w-full items-start flex-wrap">
 		<p class="flex w-auto text-[16px] sm:text-[20px] font-normal">
 			Al pleno del Grupo México Nuevo Sol
 		</p>
@@ -70,5 +70,11 @@
 				cols="30"
 				rows="5"></textarea>
 		</div>
+
+		<a
+			class="text-[16px] text-[#09f] print:hidden"
+			href="javascript:window.print();"
+			>Descargar</a
+		>
 	</div>
 </template>
