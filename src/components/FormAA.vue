@@ -7,7 +7,7 @@
 	const dateYear = ref(null);
 </script>
 <template>
-	<div class="flex w-full items-baseline">
+	<div class="flex w-full items-baseline flex-wrap">
 		<p class="flex w-[178px] text-[16px] sm:text-[20px] font-normal">Ciudad Nezahualcóyotl</p>
 		<div
 			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col w-full items-start">
+	<div class="flex flex-col w-full items-start flex-wrap">
 		<p class="flex w-auto text-[16px] sm:text-[20px] font-normal">
 			Al pleno del Grupo México Nuevo Sol
 		</p>
