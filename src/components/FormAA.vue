@@ -8,7 +8,7 @@
 </script>
 <template>
 	<div class="flex w-full items-baseline flex-wrap">
-		<p class="flex w-[178px] text-[16px] sm:text-[20px] font-normal">Ciudad Nezahualcóyotl</p>
+		<p class="flex w-[178px] text-[16px] sm:text-[20px] font-normal my-[8px]">Ciudad Nezahualcóyotl</p>
 		<div
 			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
 			<div class="flex w-auto items-end justify-start">
