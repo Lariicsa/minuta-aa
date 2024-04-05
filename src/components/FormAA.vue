@@ -70,5 +70,11 @@
 				cols="30"
 				rows="5"></textarea>
 		</div>
+
+		<a
+			class="text-[16px] text-[#09f] print:hidden"
+			href="javascript:window.print();"
+			>Descargar</a
+		>
 	</div>
 </template>
