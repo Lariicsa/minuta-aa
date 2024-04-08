@@ -1,10 +1,30 @@
 <!-- @format -->
 
 <script setup>
-	import { ref } from "vue";
+	import Modal from "@/components/ModalBox.vue";
+	import { ref, defineEmits } from "vue";
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
 	const dateYear = ref(null);
+	const activity = ref(null);
+	const activities = ref(null);
+	const activityDayStart = ref(null);
+	const activityDayEnd = ref(null);
+	const activityMonth = ref(null);
+	const activityYear = ref(null);
+
+
+	const emit = defineEmits(["showPreview", "closeModal"]);
+
+	defineProps({
+		showModal: {
+			type: Boolean,
+		},
+	});
+
+	const closeModal = () => {
+		emit("closeModal");
+	};
 </script>
 <template>
 	<div class="flex w-full items-baseline flex-wrap">
@@ -79,5 +99,12 @@
 			href="javascript:window.print();"
 			>Descargar</a
 		>
+
+		<Modal :show="showModal" @close="closeModal">
+			<div class="bg-white w-[90%] h-auto">
+				jhghjhgjg
+				<strong class="text-red">{{ dateDay }}</strong>
+			</div>
+		</Modal>
 	</div>
 </template>
