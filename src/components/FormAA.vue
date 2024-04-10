@@ -1,41 +1,59 @@
 <!-- @format -->
 
 <script setup>
-	import { ref } from "vue";
+	import Modal from "@/components/ModalBox.vue";
+	import { ref, defineEmits } from "vue";
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
 	const dateYear = ref(null);
+
+	const showModal = ref(false)
+
+	const showPreview = () => {
+		showModal.value = true
+	}
+
+	const closePreview = () => {
+		showModal.value = false
+	}
+
 </script>
 <template>
-
 	<div class="flex w-full items-baseline flex-wrap justify-end">
-    <div class="flex w-full items-baseline justify-end mb-2">
-      <div class="w-[178px] text-[16px] sm:text-[20px] font-normal">
-        Ciudad Nezahualcóyotl <strong class="text-blue font-bold">{{ dateDay }} - {{dateMonth  }}</strong>
-      </div>
-    </div>
-
-    <div class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
-      <div class="flex w-auto items-end justify-start">
-        <div class="custom-select custom-select custom-select::after">
-					<label>a</label>
-          <select v-model="dateDay" type="number">
-            <option v-for="i in 32" :key="i" :value="i">{{ i }}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="flex w-auto items-end justify-start">
-        <label>de</label>
-        <input v-model="dateMonth" type="text" class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0" />
-      </div>
-
-      <div class="flex w-auto items-end justify-start">
-        <label>de 20</label>
-        <input v-model="dateYear" type="number" class="w-[54px]" />
-      </div>
-    </div>
+		<div class="flex w-full items-baseline justify-end mb-2">
+			<div class="w-[178px] text-[16px] sm:text-[20px] font-normal">
+				Ciudad Nezahualcóyotl
+				<strong class="text-blue font-bold"
+					>{{ dateDay }} - {{ dateMonth }}</strong
+				>
+			</div>
 		</div>
+
+		<div
+			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
+			<div class="flex w-auto items-end justify-start">
+				<div class="custom-select custom-select custom-select::after">
+					<label>a</label>
+					<select v-model="dateDay" type="number">
+						<option v-for="i in 32" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="flex w-auto items-end justify-start">
+				<label>de</label>
+				<input
+					v-model="dateMonth"
+					type="text"
+					class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0" />
+			</div>
+
+			<div class="flex w-auto items-end justify-start">
+				<label>de 20</label>
+				<input v-model="dateYear" type="number" class="w-[54px]" />
+			</div>
+		</div>
+	</div>
 
 	<div class="flex flex-col w-full items-start flex-wrap">
 		<p class="flex w-auto text-[16px] sm:text-[20px] font-normal">
@@ -86,9 +104,16 @@
 			href="javascript:window.print();"
 			>Descargar</a
 		>
+
+		<button @click="showPreview">modal</button>
 	</div>
+
+	<Modal :show="showModal" @close="closeModal">
+		<div class="bg-white w-[90%] h-auto">
+
+			<strong class="text-red">{{ dateDay }}</strong>
+		</div>
+	</Modal>
 </template>
 
 
-
-st
