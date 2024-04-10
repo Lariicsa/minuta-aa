@@ -27,7 +27,7 @@
 
       <div class="flex w-auto items-end justify-start">
         <label>de</label>
-        <input v-model="dateMonth" type="number" class="w-[54px]" />
+        <input v-model="dateMonth" type="number" class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0" />
       </div>
 
       <div class="flex w-auto items-end justify-start">
@@ -82,9 +82,13 @@
 	</div>
 	<div class="flex justify-start mt-6">
 		<a
-			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white text-blue rounded-lg hover:bg-blue hover:text-white w-[326px] h-[40px]"
+			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[326px] h-[40px] decoration-0"
 			href="javascript:window.print();"
 			>Descargar</a
 		>
 	</div>
 </template>
+
+
+
+st
