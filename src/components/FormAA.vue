@@ -7,25 +7,35 @@
 	const dateYear = ref(null);
 </script>
 <template>
-	<div class="flex w-full items-baseline flex-wrap">
-		<p class="flex w-[178px] text-[16px] sm:text-[20px] font-normal my-[8px]">Ciudad Nezahualcóyotl</p>
-		<div
-			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
-			<div class="flex w-auto items-end justify-start">
-				<label>a</label>
-				<input v-model="dateDay" type="number" class="w-[54px]" />
-			</div>
-			<div class="flex w-auto items-end justify-start">
-				<label>de</label
-				><input v-model="dateMonth" type="number" class="w-[108px]" />
-			</div>
 
-			<div class="flex w-auto items-end justify-start">
-				<label>de 20</label>
-				<input v-model="dateYear" type="number" class="w-[54px]" />
-			</div>
+	<div class="flex w-full items-baseline flex-wrap justify-end">
+    <div class="flex w-full items-baseline justify-end mb-2">
+      <div class="w-[178px] text-[16px] sm:text-[20px] font-normal">
+        Ciudad Nezahualcóyotl
+      </div>
+    </div>
+
+    <div class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
+      <div class="flex w-auto items-end justify-start">
+        <div class="custom-select custom-select custom-select::after">
+					<label>a</label>
+          <select v-model="dateDay" type="number">
+            <option v-for="i in 32" :key="i" :value="i">{{ i }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex w-auto items-end justify-start">
+        <label>de</label>
+        <input v-model="dateMonth" type="number" class="w-[54px]" />
+      </div>
+
+      <div class="flex w-auto items-end justify-start">
+        <label>de 20</label>
+        <input v-model="dateYear" type="number" class="w-[54px]" />
+      </div>
+    </div>
 		</div>
-	</div>
 
 	<div class="flex flex-col w-full items-start flex-wrap">
 		<p class="flex w-auto text-[16px] sm:text-[20px] font-normal">
@@ -60,19 +70,19 @@
 				<label class="text-[16px] font-normal">de</label>
 				<input v-model="activityYear" type="number" class="w-[54px]" />
 			</div>
-			:
 		</div>
+	</div>
 
-		<div class="flex w-auto items-end justify-start flex-wrap">
-			<textarea
-				v-model="activities"
-				class="flex w-full h-[100px]"
-				cols="30"
-				rows="5"></textarea>
-		</div>
-
+	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
+		<textarea
+			v-model="activities"
+			class="flex w-[326px] h-[140px]"
+			cols="30"
+			rows="5"></textarea>
+	</div>
+	<div class="flex justify-start mt-6">
 		<a
-			class="text-[16px] text-[#09f] print:hidden"
+			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white text-blue rounded-lg hover:bg-blue hover:text-white w-[326px] h-[40px]"
 			href="javascript:window.print();"
 			>Descargar</a
 		>
