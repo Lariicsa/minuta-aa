@@ -11,7 +11,7 @@
 	<div class="flex w-full items-baseline flex-wrap justify-end">
     <div class="flex w-full items-baseline justify-end mb-2">
       <div class="w-[178px] text-[16px] sm:text-[20px] font-normal">
-        Ciudad Nezahualcóyotl
+        Ciudad Nezahualcóyotl <strong class="text-blue font-bold">{{ dateDay }} - {{dateMonth  }}</strong>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
 
       <div class="flex w-auto items-end justify-start">
         <label>de</label>
-        <input v-model="dateMonth" type="number" class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0" />
+        <input v-model="dateMonth" type="text" class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0" />
       </div>
 
       <div class="flex w-auto items-end justify-start">
