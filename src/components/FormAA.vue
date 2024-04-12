@@ -1,7 +1,8 @@
 <!-- @format -->
 
 <script setup>
-	import { onMounted, ref } from "vue";
+	import { ref } from "vue";
+	import DropDown from "./DropDown.vue";
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
 	const dateYear = ref(null);
@@ -37,14 +38,8 @@
 		<div
 			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
 			<div class="flex w-auto items-end justify-start">
-				<div class="custom-select custom-select custom-select::after">
-					<select
-						v-model="dateDay"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona un día</option>
-						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
-					</select>
-				</div>
+
+				<DropDown :modelValue="dateDay" disabledValueText="Selecciona un día" />
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
