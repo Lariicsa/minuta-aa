@@ -17,6 +17,8 @@
 	});
 
 	const activitiesList = [
+		"Tesorero",
+		"Encargado de Grupo",
 		"Comité de Información Pública",
 		"Comité de Información Pública",
 		"Comité de Literatura",
