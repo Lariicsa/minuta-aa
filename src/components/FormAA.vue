@@ -5,7 +5,7 @@
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
 	const dateYear = ref(null);
-	const activity = ref(null);
+	const activityOption = ref(null);
 	const activities = ref(null);
 	const activityDayStart = ref(null);
 	const activityDayEnd = ref(null);
@@ -86,22 +86,22 @@
 			<label class="text-[16px] font-normal leading-snug"
 				>A continuación, se plasma el informe de</label
 			>
-			<div class="custom-select custom-select custom-select::after">
+			<div class="custom-select custom-select custom-select::after mt-[16px]">
 				<select
 					v-model="acitvity"
-					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px]">
+					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
 					<option disabled value="">Selecciona un día</option>
 					<option
-						v-for="activity in activitiesList"
-						:key="activity"
-						:value="activity">
-						{{ activity }}
+						v-for="activityOption in activitiesList"
+						:key="activityOption"
+						:value="activityOption">
+						{{ activityOption }}
 					</option>
 				</select>
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
-				<label class="text-[16px] font-normal leading-snug"
+				<label class="text-[16px] font-normal leading-snug mt-[16px]"
 					>de la semana del</label
 				>
 				<div class="custom-select custom-select custom-select::after">
@@ -139,7 +139,7 @@
 				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
-				<label class="text-[16px] font-normal">de</label>
+				<label class="text-[16px] font-normal mt-[16px]">de</label>
 				<div class="custom-select custom-select custom-select::after">
 					<select
 						v-model="activityYear"
@@ -155,13 +155,13 @@
 	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
 		<textarea
 			v-model="activities"
-			class="flex w-[326px] h-[140px]"
+			class="flex w-[308px] h-[140px] md:min-w-[940px] md:h-[240px] rounded-lg p-[24px]"
 			cols="30"
 			rows="5"></textarea>
 	</div>
 	<div class="flex justify-start mt-6">
 		<a
-			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[326px] h-[40px] no-underline"
+			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[308px] h-[40px] no-underline"
 			href="javascript:window.print();"
 			>Descargar</a
 		>
