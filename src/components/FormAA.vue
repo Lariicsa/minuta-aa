@@ -1,10 +1,28 @@
 <!-- @format -->
 
 <script setup>
-	import { ref } from "vue";
+	import { onMounted, ref } from "vue";
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
 	const dateYear = ref(null);
+	const activityOption = ref(null);
+	const activities = ref(null);
+	const activityDayStart = ref(null);
+	const activityDayEnd = ref(null);
+	const activityMonth = ref(null);
+	const activityYear = ref(null);
+
+	const months = Array.from({ length: 12 }, (item, i) => {
+		return new Date(0, i).toLocaleString("es-US", { month: "long" });
+	});
+
+	const activitiesList = [
+		"Comité de Información Pública",
+		"Comité de Información Pública",
+		"Comité de Literatura",
+		"Comité de Revista Plenitud",
+		"Representante de Servicios Generales",
+	];
 </script>
 <template>
 	<div class="flex w-full items-baseline flex-wrap justify-end">
@@ -18,42 +36,38 @@
 			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
 			<div class="flex w-auto items-end justify-start">
 				<div class="custom-select custom-select custom-select::after">
-					<label>a</label>
-					<input
+					<select
 						v-model="dateDay"
-						type="number"
-						class="text-[16px] text-blue font-semibold w-[36.01px] border border-b-1 border-t-0 border-l-0 border-r-0" />
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
 				</div>
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
 				<label>de</label>
-				<select
-					v-model="dateMonth"
-					type="String"
-					class="text-blue justify-center border border-b-1 border-t-0 border-l-0 border-r-0">
-					<option value="">Mes</option>
-					<option value="Enero">Enero</option>
-					<option value="Febrero">Febrero</option>
-					<option value="Marzo">Marzo</option>
-					<option value="Abril">Abril</option>
-					<option value="Mayo">Mayo</option>
-					<option value="Junio">Junio</option>
-					<option value="Julio">Julio</option>
-					<option value="Agosto">Agosto</option>
-					<option value="Septiembre">Septiembre</option>
-					<option value="Octubre">Octubre</option>
-					<option value="Noviembre">Noviembre</option>
-					<option value="Diciembre">Diciembre</option>
-				</select>
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="dateMonth"
+						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="month in months" :key="month" :value="month">
+							{{ month }}
+						</option>
+					</select>
+				</div>
 			</div>
-
+			de 20
 			<div class="flex w-auto items-end justify-start">
-				<label>de 20</label>
-				<input
-					v-model="dateYear"
-					type="number"
-					class="text-[16px] text-blue font-semibold w-[36px] border border-b-1 border-t-0 border-l-0 border-r-0" />
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="dateYear"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-blue indent-[4px] ml-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 40" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -63,66 +77,77 @@
 			Al pleno del Grupo México Nuevo Sol
 		</p>
 		<p class="flex w-auto text-[16px] sm:text-[20px] font-normal">Presente</p>
-		<p class="text-[16px] font-normal">
+		<p class="text-[16px] font-normal leading-snug">
 			Por medio de la presente me dirijo a ustedes Compañeros, principalmente
 			deseándoles que los frutos de la práctica de nuestro programa sean
 			reflejados en cada uno de los ámbitos de su vida.
 		</p>
 		<div class="flex w-auto items-end justify-start flex-wrap">
-			<label class="text-[16px] font-normal"
+			<label class="text-[16px] font-normal leading-snug"
 				>A continuación, se plasma el informe de</label
 			>
-			<select
-				v-model="activity"
-				type="String"
-				class="text-blue justify-center border border-b-1 border-t-0 border-l-0 border-r-0">
-				<option value="">Actividad</option>
-				<option value="Actividad1">Actividad 1</option>
-				<option value="Actividad2">Actividad 2</option>
-				<option value="Actividad3">Actividad 3</option>
-			</select>
+			<div class="custom-select custom-select custom-select::after mt-[16px]">
+				<select
+					v-model="activityOption"
+					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+					<option disabled value="">Selecciona un día</option>
+					<option
+						v-for="activityOption in activitiesList"
+						:key="activityOption"
+						:value="activityOption">
+						{{ activityOption }}
+					</option>
+				</select>
+			</div>
+
 			<div class="flex w-auto items-end justify-start">
-				<label class="text-[16px] font-normal">de la semana del</label>
-				<input
-					v-model="activityDayStart"
-					type="number"
-					class="text-[16px] text-blue font-semibold w-[36.01px] justify-center border border-b-1 border-t-0 border-l-0 border-r-0" />
+				<label class="text-[16px] font-normal leading-snug mt-[16px]"
+					>de la semana del</label
+				>
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityDayStart"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">al</label>
-				<input
-					v-model="activityDayEnd"
-					type="number"
-					class="text-[16px] text-blue font-semibold w-[36.01px] text-blue justify-center border border-b-1 border-t-0 border-l-0 border-r-0" />
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityDayEnd"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">de</label>
-				<select
-					v-model="dateMonth"
-					type="String"
-					class="text-blue justify-center border border-b-1 border-t-0 border-l-0 border-r-0">
-					<option value="">Mes</option>
-					<option value="Enero">Enero</option>
-					<option value="Febrero">Febrero</option>
-					<option value="Marzo">Marzo</option>
-					<option value="Abril">Abril</option>
-					<option value="Mayo">Mayo</option>
-					<option value="Junio">Junio</option>
-					<option value="Julio">Julio</option>
-					<option value="Agosto">Agosto</option>
-					<option value="Septiembre">Septiembre</option>
-					<option value="Octubre">Octubre</option>
-					<option value="Noviembre">Noviembre</option>
-					<option value="Diciembre">Diciembre</option>
-				</select>
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityMonth"
+						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="month in months" :key="month" :value="month">
+							{{ month }}
+						</option>
+					</select>
+				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
-				<label class="text-[16px] font-normal">de 20</label>
-				<input
-					v-model="activityYear"
-					type="number"
-					class="text-[16px] text-blue font-semibold w-[36.01px] text-blue justify-center border border-b-1 border-t-0 border-l-0 border-r-0" />
+				<label class="text-[16px] font-normal mt-[16px]">de</label>
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityYear"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -130,15 +155,29 @@
 	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
 		<textarea
 			v-model="activities"
-			class="flex w-[326px] h-[140px] md:w-[790px] md:h-[240px]"
+			class="flex w-[79vw] md:w-[72vw] md:max-w-[980px] h-[140px] md:h-[240px] rounded-lg p-[24px] border border-[#c1c1c1]"
 			cols="30"
 			rows="5"></textarea>
 	</div>
 	<div class="flex justify-start mt-6">
 		<a
-			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[326px] h-[40px] decoration-0"
+			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[308px] h-[40px] no-underline"
 			href="javascript:window.print();"
 			>Descargar</a
 		>
 	</div>
 </template>
+
+<style>
+	select {
+		/* for Firefox */
+		-moz-appearance: none;
+		/* for Safari, Chrome, Opera */
+		-webkit-appearance: none;
+	}
+
+	/* for IE10 */
+	select::-ms-expand {
+		display: none;
+	}
+</style>

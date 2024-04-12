@@ -3,7 +3,7 @@
 <script setup></script>
 <template>
 	<div
-		class="flexx flex flex-col items-center justify-start min-h-screen p-[16px] relative">
+		class="flexx flex flex-col items-center justify-start min-h-screen p-[24px] relative">
 		<div class="shadow-lg absolute inset-0 pointer-events-none"></div>
 		<RouterView />
 	</div>
@@ -15,10 +15,6 @@
 		margin: auto;
 		border: 10px solid transparent;
 		padding: 24px;
-		background-color: rgb(250, 250, 244);
-	}
-
-	.shadow-lg {
-		box-shadow: 4 4 70px rgba(0, 0, 0, 1.2);
+		background-color: #ffffff;
 	}
 </style>

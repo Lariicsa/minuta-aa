@@ -8,8 +8,10 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-			
-		},
+      boxShadow: {
+        'shadow-lg': '4 4 70px rgba(0, 0, 0, 0.9)',
+      }
+    },
 		colors: {
       black: "#0E0E0F",
 			blue: "#101C85",
