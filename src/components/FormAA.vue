@@ -38,7 +38,7 @@
 				<div class="custom-select custom-select custom-select::after">
 					<select
 						v-model="dateDay"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue">
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
 						<option disabled value="">Selecciona un día</option>
 						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
 					</select>
@@ -50,7 +50,7 @@
 				<div class="custom-select custom-select custom-select::after">
 					<select
 						v-model="dateMonth"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0">
+						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
 						<option disabled value="">Selecciona un día</option>
 						<option v-for="month in months" :key="month" :value="month">
 							{{ month }}
@@ -58,12 +58,12 @@
 					</select>
 				</div>
 			</div>
-			de
+			de 20
 			<div class="flex w-auto items-end justify-start">
 				<div class="custom-select custom-select custom-select::after">
 					<select
 						v-model="dateYear"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0">
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-blue indent-[4px] ml-[4px] text-center">
 						<option disabled value="">Selecciona un día</option>
 						<option v-for="i in 40" :key="i" :value="i">{{ i }}</option>
 					</select>
@@ -89,7 +89,7 @@
 			<div class="custom-select custom-select custom-select::after">
 				<select
 					v-model="acitvity"
-					class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0">
+					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px]">
 					<option disabled value="">Selecciona un día</option>
 					<option
 						v-for="activity in activitiesList"
@@ -101,24 +101,53 @@
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
-				<label class="text-[16px] font-normal leading-snug">de la semana del</label>
-				<input v-model="activityDayStart" type="number" class="w-[54px]" />
+				<label class="text-[16px] font-normal leading-snug"
+					>de la semana del</label
+				>
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityDayStart"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">al</label>
-				<input v-model="activityDayEnd" type="number" class="w-[54px]" />
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityDayEnd"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">de</label>
-				<input v-model="activityMonth" type="number" class="w-[80px]" />
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityMonth"
+						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="month in months" :key="month" :value="month">
+							{{ month }}
+						</option>
+					</select>
+				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">de</label>
-				<input
-					v-model="activityYear"
-					type="number"
-					class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0" />
+				<div class="custom-select custom-select custom-select::after">
+					<select
+						v-model="activityYear"
+						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
+						<option disabled value="">Selecciona un día</option>
+						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
