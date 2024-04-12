@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <script setup>
-	import { ref } from "vue";
+	import { ref, computed } from "vue";
 	import DropDown from "./DropDown.vue";
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
@@ -17,9 +17,17 @@
 		return new Date(0, i).toLocaleString("es-US", { month: "long" });
 	});
 
+	const daysList = computed(() => {
+		let x = undefined;
+		for (let i = 0; i < 32; i++) {
+			x = i;
+		}
+		return x;
+	});
+
 	const activitiesList = [
+		"Coordinador",
 		"Tesorero",
-		"Encargado de Grupo",
 		"Comité de Información Pública",
 		"Comité de Información Pública",
 		"Comité de Literatura",
@@ -38,8 +46,10 @@
 		<div
 			class="flex w-auto h-[36px] text-[16px] sm:text-[20px] justify-center items-end">
 			<div class="flex w-auto items-end justify-start">
-
-				<DropDown :modelValue="dateDay" disabledValueText="Selecciona un día" />
+				<DropDown
+					:modelValue="dateDay"
+					disabledValueText="Selecciona un día"
+					:itemsList="daysList" />
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
@@ -48,7 +58,7 @@
 					<select
 						v-model="dateMonth"
 						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
-						<option disabled value="">Selecciona un día</option>
+						<option disabled value="">Selecciona un mes</option>
 						<option v-for="month in months" :key="month" :value="month">
 							{{ month }}
 						</option>
@@ -61,7 +71,7 @@
 					<select
 						v-model="dateYear"
 						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-blue indent-[4px] ml-[4px] text-center">
-						<option disabled value="">Selecciona un día</option>
+						<option disabled value="">Selecciona año</option>
 						<option v-for="i in 40" :key="i" :value="i">{{ i }}</option>
 					</select>
 				</div>
@@ -87,7 +97,7 @@
 				<select
 					v-model="activityOption"
 					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-					<option disabled value="">Selecciona un día</option>
+					<option disabled value="">Selecciona una actividad</option>
 					<option
 						v-for="activityOption in activitiesList"
 						:key="activityOption"
@@ -105,7 +115,7 @@
 					<select
 						v-model="activityDayStart"
 						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona un día</option>
+						<option disabled value="">Selecciona día de inicio</option>
 						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
 					</select>
 				</div>
@@ -117,7 +127,7 @@
 					<select
 						v-model="activityDayEnd"
 						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona un día</option>
+						<option disabled value="">Selecciona día de término</option>
 						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
 					</select>
 				</div>
@@ -128,7 +138,7 @@
 					<select
 						v-model="activityMonth"
 						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
-						<option disabled value="">Selecciona un día</option>
+						<option disabled value="">Selecciona un Mes</option>
 						<option v-for="month in months" :key="month" :value="month">
 							{{ month }}
 						</option>
@@ -141,7 +151,7 @@
 					<select
 						v-model="activityYear"
 						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona un día</option>
+						<option disabled value="">Selecciona año</option>
 						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
 					</select>
 				</div>
