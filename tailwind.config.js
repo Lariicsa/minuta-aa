@@ -12,7 +12,7 @@ module.exports = {
 		},
 		colors: {
       black: "#0E0E0F",
-			blue: "#2E3192",
+			blue: "#101C85",
       "grey-dark": "#393737",
 			white: "#FFFFFF",
 		},
@@ -20,6 +20,9 @@ module.exports = {
 	fontfamily: {
 		body: ["Montserrat"],
 	},
-
+	
 	// ...
+
+
+	
 };
