@@ -88,7 +88,7 @@
 			>
 			<div class="custom-select custom-select custom-select::after mt-[16px]">
 				<select
-					v-model="acitvity"
+					v-model="activityOption"
 					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
 					<option disabled value="">Selecciona un día</option>
 					<option
@@ -155,7 +155,7 @@
 	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
 		<textarea
 			v-model="activities"
-			class="flex w-[308px] h-[140px] md:min-w-[940px] md:h-[240px] rounded-lg p-[24px]"
+			class="flex w-[79vw] md:w-[72vw] md:max-w-[980px] h-[140px] md:h-[240px] rounded-lg p-[24px] border border-[#c1c1c1]"
 			cols="30"
 			rows="5"></textarea>
 	</div>
