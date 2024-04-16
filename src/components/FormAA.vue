@@ -14,12 +14,12 @@
 	const activityYear = ref(null);
 
 	const months = Array.from({ length: 12 }, (item, i) => {
-		return new Date(0, i).toLocaleString("es-US", { month: "long" });
+		return new Date(0, i).toLocaleString("es-MX", { month: "long" });
 	});
 
 	const daysList = computed(() => {
 		let x = undefined;
-		for (let i = 0; i < 32; i++) {
+		for (let i = 1; i < 32; i++) {
 			x = i;
 		}
 		return x;
@@ -55,14 +55,7 @@
 			<div class="flex w-auto items-end justify-start">
 				<label>de</label>
 				<div class="custom-select custom-select custom-select::after">
-					<select
-						v-model="dateMonth"
-						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
-						<option disabled value="">Selecciona un mes</option>
-						<option v-for="month in months" :key="month" :value="month">
-							{{ month }}
-						</option>
-					</select>
+					<DropDown :itemsList="months" disabledValueText="Selecciona un mes" />
 				</div>
 			</div>
 			de 20

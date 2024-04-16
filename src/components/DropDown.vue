@@ -21,7 +21,7 @@
 		<select
 			v-model="updateModel"
 			class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-			<option disabled value="">{{ disabledValueText }}></option>
+			<option disabled value="">{{ disabledValueText }}</option>
 			<option v-for="i in itemsList" :key="i" :value="i">{{ i }}</option>
 		</select>
 	</div>
