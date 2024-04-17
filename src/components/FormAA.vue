@@ -55,7 +55,10 @@
 			<div class="flex w-auto items-end justify-start">
 				<label>de</label>
 				<div class="custom-select custom-select custom-select::after">
-					<DropDown :itemsList="months" disabledValueText="Selecciona un mes" />
+					<DropDown
+						:updateModel="dateMonth"
+						:itemsList="months"
+						disabledValueText="Selecciona un mes" />
 				</div>
 			</div>
 			de 20
@@ -159,6 +162,7 @@
 			cols="30"
 			rows="5"></textarea>
 	</div>
+	
 	<div class="flex justify-start mt-6">
 		<a
 			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[308px] h-[40px] no-underline"
