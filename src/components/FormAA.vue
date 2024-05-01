@@ -3,6 +3,9 @@
 <script setup>
 	import { ref, computed } from "vue";
 	import DropDown from "./DropDown.vue";
+	import TextArea from "./TextArea.vue";
+	import ButtonDowntown from "./ButtonDowntown.vue";
+
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
 	const dateYear = ref(null);
@@ -14,12 +17,12 @@
 	const activityYear = ref(null);
 
 	const months = Array.from({ length: 12 }, (item, i) => {
-		return new Date(0, i).toLocaleString("es-US", { month: "long" });
+		return new Date(0, i).toLocaleString("es-MX", { month: "long" });
 	});
 
 	const daysList = computed(() => {
 		let x = undefined;
-		for (let i = 0; i < 32; i++) {
+		for (let i = 1; i < 32; i++) {
 			x = i;
 		}
 		return x;
@@ -55,14 +58,10 @@
 			<div class="flex w-auto items-end justify-start">
 				<label>de</label>
 				<div class="custom-select custom-select custom-select::after">
-					<select
-						v-model="dateMonth"
-						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
-						<option disabled value="">Selecciona un mes</option>
-						<option v-for="month in months" :key="month" :value="month">
-							{{ month }}
-						</option>
-					</select>
+					<DropDown
+						:updateModel="dateMonth"
+						:itemsList="months"
+						disabledValueText="Selecciona un mes" />
 				</div>
 			</div>
 			de 20
@@ -111,42 +110,40 @@
 				<label class="text-[16px] font-normal leading-snug mt-[16px]"
 					>de la semana del</label
 				>
-				<div class="custom-select custom-select custom-select::after">
-					<select
+
+				<div class="flex w-auto items-end justify-start">
+					<DropDown
 						v-model="activityDayStart"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona día de inicio</option>
-						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
-					</select>
+						:modelValue="dateDay"
+						disabledValueText="Selecciona día de inicio"
+						:itemsList="daysList" />
 				</div>
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">al</label>
-				<div class="custom-select custom-select custom-select::after">
-					<select
+				<div class="flex w-auto items-end justify-start">
+					<DropDown
 						v-model="activityDayEnd"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona día de término</option>
-						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
-					</select>
+						:modelValue="dateDay"
+						disabledValueText="Selecciona día de termino"
+						:itemsList="daysList" />
 				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal">de</label>
-				<div class="custom-select custom-select custom-select::after">
-					<select
-						v-model="activityMonth"
-						class="ml-[4px] w-[98px] sm:w-[118px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-center text-blue indent-[4px]">
-						<option disabled value="">Selecciona un Mes</option>
-						<option v-for="month in months" :key="month" :value="month">
-							{{ month }}
-						</option>
-					</select>
+				<div class="flex w-auto items-end justify-start">
+					<div class="custom-select custom-select custom-select::after">
+						<DropDown
+							v-model="activityMonth"
+							:updateModel="dateMonth"
+							:itemsList="months"
+							disabledValueText="Selecciona un mes" />
+					</div>
 				</div>
 			</div>
 			<div class="flex w-auto items-end justify-start">
-				<label class="text-[16px] font-normal mt-[16px]">de</label>
+				<label class="text-[16px] font-normal mt-[16px]">de 20</label>
 				<div class="custom-select custom-select custom-select::after">
 					<select
 						v-model="activityYear"
@@ -160,19 +157,10 @@
 	</div>
 
 	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
-		<textarea
-			v-model="activities"
-			class="flex w-[79vw] md:w-[72vw] md:max-w-[980px] h-[140px] md:h-[240px] rounded-lg p-[24px] border border-[#c1c1c1]"
-			cols="30"
-			rows="5"></textarea>
+		<TextArea v-model="activities" :class="textareaClasses" />
 	</div>
-	<div class="flex justify-start mt-6">
-		<a
-			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[308px] h-[40px] no-underline"
-			href="javascript:window.print();"
-			>Descargar</a
-		>
-	</div>
+
+	<ButtonDowntown />
 </template>
 
 <style>
