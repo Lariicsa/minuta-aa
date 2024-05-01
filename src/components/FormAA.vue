@@ -155,26 +155,11 @@
 			</div>
 		</div>
 	</div>
-	<!-- 
-	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
-		<textarea
-			v-model="activities"
-			class="flex w-[79vw] md:w-[72vw] md:max-w-[980px] h-[140px] md:h-[240px] rounded-lg p-[24px] border border-[#c1c1c1]"
-			cols="30"
-			rows="5"></textarea>
-	</div> -->
 
 	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
 		<TextArea v-model="activities" :class="textareaClasses" />
 	</div>
 
-	<!-- <div class="flex justify-start mt-6">
-		<a
-			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[308px] h-[40px] no-underline"
-			href="javascript:window.print();"
-			>Descargar</a
-		>
-	</div> -->
 	<ButtonDowntown />
 </template>
 
