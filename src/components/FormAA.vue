@@ -4,7 +4,8 @@
 	import { ref, computed } from "vue";
 	import DropDown from "./DropDown.vue";
 	import TextArea from "./TextArea.vue";
-	import ButtonDowntown from "./ButtonDowntown.vue";
+	import ButtonDownload from "./ButtonDownload.vue";
+	import ActivitiesList from "./ActivitiesList.vue";
 
 	const dateDay = ref(null);
 	const dateMonth = ref(null);
@@ -28,15 +29,13 @@
 		return x;
 	});
 
-	const activitiesList = [
-		"Coordinador",
-		"Tesorero",
-		"Comité de Información Pública",
-		"Comité de Información Pública",
-		"Comité de Literatura",
-		"Comité de Revista Plenitud",
-		"Representante de Servicios Generales",
-	];
+	const yearList = computed(() => {
+		const result = [];
+		for (let i = 25; i <= 35; i++) {
+			result.push(i);
+		}
+		return result;
+	});
 </script>
 <template>
 	<div class="flex w-full items-baseline flex-wrap justify-end">
@@ -67,12 +66,10 @@
 			de 20
 			<div class="flex w-auto items-end justify-start">
 				<div class="custom-select custom-select custom-select::after">
-					<select
-						v-model="dateYear"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] sm:text-[20px] text-blue indent-[4px] ml-[4px] text-center">
-						<option disabled value="">Selecciona año</option>
-						<option v-for="i in 40" :key="i" :value="i">{{ i }}</option>
-					</select>
+					<DropDown
+						:updateModel="dateYear"
+						:itemsList="yearList"
+						disabledValueText="Selecciona un año" />
 				</div>
 			</div>
 		</div>
@@ -93,7 +90,7 @@
 				>A continuación, se plasma el informe de</label
 			>
 			<div class="custom-select custom-select custom-select::after mt-[16px]">
-				<select
+				<!-- <select
 					v-model="activityOption"
 					class="ml-[4px] w-[285px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
 					<option disabled value="">Selecciona una actividad</option>
@@ -103,7 +100,8 @@
 						:value="activityOption">
 						{{ activityOption }}
 					</option>
-				</select>
+				</select> -->
+				<ActivitiesList v-model="activityOption" />
 			</div>
 
 			<div class="flex w-auto items-end justify-start">
@@ -145,37 +143,21 @@
 			<div class="flex w-auto items-end justify-start">
 				<label class="text-[16px] font-normal mt-[16px]">de 20</label>
 				<div class="custom-select custom-select custom-select::after">
-					<select
+					<DropDown
 						v-model="activityYear"
-						class="w-[54px] border border-b-1 border-t-0 border-l-0 border-r-0 text-[16px] text-blue indent-[4px] text-center">
-						<option disabled value="">Selecciona año</option>
-						<option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
-					</select>
+						:updateModel="dateYear"
+						:itemsList="yearList"
+						disabledValueText="Selecciona un año" />
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 
-	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
-		<textarea
-			v-model="activities"
-			class="flex w-[79vw] md:w-[72vw] md:max-w-[980px] h-[140px] md:h-[240px] rounded-lg p-[24px] border border-[#c1c1c1]"
-			cols="30"
-			rows="5"></textarea>
-	</div> -->
 
 	<div class="flex w-auto items-end justify-start flex-wrap mt-9">
 		<TextArea v-model="activities" :class="textareaClasses" />
 	</div>
 
-	<!-- <div class="flex justify-start mt-6">
-		<a
-			class="text-[20px] text-blue print:hidden flex flex-col justify-center items-center bg-white border-blue border border-solid rounded-lg hover:bg-blue hover:text-white w-[308px] h-[40px] no-underline"
-			href="javascript:window.print();"
-			>Descargar</a
-		>
-	</div> -->
-	<ButtonDowntown />
+	<ButtonDownload />
 </template>
 
 <style>
